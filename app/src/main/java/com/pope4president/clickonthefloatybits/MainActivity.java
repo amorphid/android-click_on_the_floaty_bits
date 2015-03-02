@@ -43,6 +43,7 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
 
+
     }
 
     @Override
@@ -67,41 +68,22 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String randomHexColor() throws IOException, JSONException, InterruptedException {
-        final String urlString             = "http://rack-random-color.herokuapp.com/";
-        final JSONObject jsonObject        = new JSONObject();
+    public String randomHexColor() throws IOException, InterruptedException, JSONException {
+        final String urlString       = "http://rack-random-color.herokuapp.com/";
         URL url                      = new URL(urlString);
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        final StringBuilder response = new StringBuilder();
 
         Thread thread = new Thread(new Runnable() {
             public void run() {
-                BufferedReader reader        = null;
                 try {
-                    reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                StringBuilder response       = new StringBuilder();
-                String inputLine;
-
-                try {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String inputLine;
                     while ((inputLine = reader.readLine()) != null) {
                         response.append(inputLine);
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                try {
                     reader.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    jsonObject.put(urlString, response.toString());
-                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
@@ -110,8 +92,7 @@ public class MainActivity extends Activity {
         thread.start();
         thread.join();
 
-        JSONObject colorJson = new JSONObject((String) jsonObject.get(urlString));
-        return (String) colorJson.get("color");
+        return (String) new JSONObject(response.toString()).get("color");
     }
 
     public void setCircleBackGroundColor(View view) throws IOException, JSONException, InterruptedException {

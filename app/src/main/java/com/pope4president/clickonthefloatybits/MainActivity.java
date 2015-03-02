@@ -19,7 +19,7 @@ import java.net.URL;
 
 
 public class MainActivity extends Activity {
-    public char[] values = {
+    final public static char[] values = {
         '0', '1', '2', '3',
         '4', '5', '6', '7',
         '8', '9', 'a', 'b',
@@ -42,8 +42,6 @@ public class MainActivity extends Activity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -68,7 +66,9 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String randomHexColor() throws IOException, InterruptedException, JSONException {
+    public void setCircleBackGroundColor(View view) throws IOException, JSONException, InterruptedException {
+        final GradientDrawable shape = (GradientDrawable) view.getBackground();
+
         final String urlString       = "http://rack-random-color.herokuapp.com/";
         URL url                      = new URL(urlString);
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -83,6 +83,16 @@ public class MainActivity extends Activity {
                         response.append(inputLine);
                     }
                     reader.close();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                shape.setColor(Color.parseColor((String) new JSONObject(response.toString()).get("color")));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -90,13 +100,5 @@ public class MainActivity extends Activity {
         });
 
         thread.start();
-        thread.join();
-
-        return (String) new JSONObject(response.toString()).get("color");
-    }
-
-    public void setCircleBackGroundColor(View view) throws IOException, JSONException, InterruptedException {
-        GradientDrawable shape = (GradientDrawable) view.getBackground();
-        shape.setColor(Color.parseColor(randomHexColor()));
     }
 }

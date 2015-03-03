@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
 import android.view.View;
 
 import org.json.JSONException;
@@ -15,7 +16,34 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public abstract class Shape extends Activity {
+public abstract class BaseActivity extends Activity {
+    protected ClickOnTheFloatyBits mClickOnTheFloatyBits;
+
+
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mClickOnTheFloatyBits = (ClickOnTheFloatyBits)this.getApplicationContext();
+    }
+
+    protected void onResume() {
+        super.onResume();
+        mClickOnTheFloatyBits.setCurrentActivity(this);
+    }
+    protected void onPause() {
+        clearReferences();
+        super.onPause();
+    }
+    protected void onDestroy() {
+        clearReferences();
+        super.onDestroy();
+    }
+
+    private void clearReferences(){
+        Activity currActivity = mClickOnTheFloatyBits.getCurrentActivity();
+        if (currActivity != null && currActivity.equals(this))
+            mClickOnTheFloatyBits.setCurrentActivity(null);
+    }
+
     public void setBackGroundColor(View view) throws IOException, JSONException, InterruptedException {
         final GradientDrawable shape = (GradientDrawable) view.getBackground();
 

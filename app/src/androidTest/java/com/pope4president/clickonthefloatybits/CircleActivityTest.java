@@ -1,13 +1,8 @@
 package com.pope4president.clickonthefloatybits;
 
+import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.doesNotExist;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import android.view.View;
 
 public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleActivity> {
     public CircleActivityTest() {
@@ -21,16 +16,32 @@ public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleA
     }
 
     public void testShapeMorph() {
-        onView(withId(R.id.circle))
-            .perform(click());
+        click(R.id.circle);
+        click(R.id.square);
+        expect(getView(R.id.circle)).toExist();
+    }
 
-        onView(withId(R.id.square))
-            .perform(click());
+    public Expect expect(View view) {
+        return new Expect(view);
+    }
 
-        onView(withId(R.id.circle))
-            .check(matches(isDisplayed()));
+    public void click(final int viewId) {
+        getCurrentActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                View view = getView(viewId);
+                view.performClick();
+            }
+        });
 
-        onView(withId(R.id.square))
-            .check(doesNotExist());
+        getInstrumentation().waitForIdleSync();
+    }
+
+    public Activity getCurrentActivity() {
+        return ((ClickOnTheFloatyBits) getActivity().getApplicationContext()).getCurrentActivity();
+    }
+
+    public View getView(int viewId) {
+        return getCurrentActivity().findViewById(viewId);
     }
 }

@@ -8,7 +8,7 @@ import org.json.JSONException;
 import java.io.IOException;
 
 
-public class SquareActivity extends Shape {
+public class SquareActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,13 +9,9 @@ public class Expect {
         this.view = view;
     }
 
-    public void toExist() {
+    public void toExist() throws Exception {
         if (view == null) {
-            try {
-                throw new Exception();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            throw new Exception();
         }
     }
 }

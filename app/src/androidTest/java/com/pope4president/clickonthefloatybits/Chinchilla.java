@@ -3,6 +3,8 @@ package com.pope4president.clickonthefloatybits;
 import android.app.Activity;
 import android.view.View;
 
+import java.util.HashMap;
+
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 
 public class Chinchilla {
@@ -30,7 +32,9 @@ public class Chinchilla {
     }
 
     public static View getView(int viewId) {
-        return getCurrentActivity().findViewById(viewId);
+        HashMap iDindex = new ViewNodeIndex(new ViewNode(getRootView())).idIndex;
+
+        return (View) iDindex.get(viewId);
     }
 
     public static View getRootView() {

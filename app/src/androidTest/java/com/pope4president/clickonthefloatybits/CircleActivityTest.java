@@ -4,7 +4,6 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import static com.pope4president.clickonthefloatybits.Chinchilla.click;
 import static com.pope4president.clickonthefloatybits.Chinchilla.expect;
-import static com.pope4president.clickonthefloatybits.Chinchilla.getRootView;
 import static com.pope4president.clickonthefloatybits.Chinchilla.getView;
 
 public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleActivity> {

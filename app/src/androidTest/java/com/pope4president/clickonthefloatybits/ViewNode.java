@@ -7,46 +7,44 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ViewNode {
-    public ArrayList<ViewNode> children = new ArrayList<ViewNode>();
-    public boolean             isTextView;
-    public boolean             isViewGroup;
-    public View view;
-
+    public ArrayList<ViewNode> children    = new ArrayList<ViewNode>();
+    public boolean             isTextView  = false;
+    public boolean             isViewGroup = false;
+    public String              text;
+    public View                view;
 
     public ViewNode(View view) {
-        try {
-            this.view = (ViewGroup) view;
-            this.isViewGroup = true;
-        } catch (Exception e) {
-            this.isViewGroup = false;
+        setView(view);
+
+        if (view instanceof ViewGroup) {
+            setViewGroup((ViewGroup) view);
         }
 
-        try {
-            this.view = (TextView) view;
-            this.isTextView = true;
-        } catch (Exception e) {
-            this.isTextView = false;
+        if (view instanceof TextView) {
+            setTextView((TextView) view);
         }
+    }
 
-        if (this.view == null) {
-            this.view = (View) view;
-        }
+    public void setView (View view) {
+        this.view = view;
+    }
 
-        if (this.isViewGroup) {
-            View    child;
-            int     count = 0;
-            ViewNode node;
+    public void setTextView (TextView view) {
+        this.isTextView = true;
+        this.text       = (String) view.getText();
+    }
 
-            while (true) {
-                child = ((ViewGroup) this.view).getChildAt(count);
+    public void setViewGroup (ViewGroup view) {
+        this.isViewGroup = true;
+        setViewGroupChildren(view, 0);
+    }
 
-                if (child != null) {
-                    children.add(new ViewNode(child));
-                    count += 1;
-                } else {
-                    break;
-                }
-            }
+    public void setViewGroupChildren (ViewGroup parent, int position) {
+        View child = parent.getChildAt(position);
+
+        if (child != null) {
+            children.add(new ViewNode(child));
+            setViewGroupChildren(parent, position + 1);
         }
     }
 }

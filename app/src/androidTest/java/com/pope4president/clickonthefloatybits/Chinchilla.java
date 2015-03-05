@@ -32,4 +32,12 @@ public class Chinchilla {
     public static View getView(int viewId) {
         return getCurrentActivity().findViewById(viewId);
     }
+
+    public static View getRootView() {
+        return getCurrentActivity()
+                   .getWindow()
+                   .getDecorView()
+                   .getRootView();
+    }
+
 }

@@ -27,13 +27,11 @@ public class Chinchilla {
         getInstrumentation().waitForIdleSync();
     }
 
-    public static void clickText(final int textViewId) {
-        final String textViewText = getCurrentActivity().getApplicationContext().getString(textViewId);
-
+    public static void clickText(final String text) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                View view = getTextView(textViewText);
+                View view = getTextView(text);
                 view.performClick();
             }
         };

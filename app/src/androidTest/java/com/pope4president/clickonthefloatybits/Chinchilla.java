@@ -13,11 +13,27 @@ public class Chinchilla {
         return new Expect(view);
     }
 
-    public static void click(final int viewId) {
+    public static void clickId(final int viewId) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 View view = getView(viewId);
+                view.performClick();
+            }
+        };
+
+        getCurrentActivity().runOnUiThread(runnable);
+
+        getInstrumentation().waitForIdleSync();
+    }
+
+    public static void clickText(final int textViewId) {
+        final String textViewText = getCurrentActivity().getApplicationContext().getString(textViewId);
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                View view = getTextView(textViewText);
                 view.performClick();
             }
         };
@@ -35,6 +51,12 @@ public class Chinchilla {
         HashMap iDindex = new ViewNodeIndex(new ViewNode(getRootView())).idIndex;
 
         return (View) iDindex.get(viewId);
+    }
+
+    public static View getTextView(String viewText) {
+        HashMap textIndex = new ViewNodeIndex(new ViewNode(getRootView())).textIndex;
+
+        return (View) textIndex.get(viewText);
     }
 
     public static View getRootView() {

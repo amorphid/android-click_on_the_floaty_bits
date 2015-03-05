@@ -5,4 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_square">SquareActivity</string>
+    <string name="square_text">Hey look, a square</string>
+    <string name="circle_text">I\'m a circle</string>
 </resources>

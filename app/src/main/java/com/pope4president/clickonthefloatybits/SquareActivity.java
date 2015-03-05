@@ -16,13 +16,16 @@ public class SquareActivity extends BaseActivity {
 
         View view = findViewById(R.id.square);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                morphShape(v);
+            }
+        });
+
         try {
             setBackGroundColor(view);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (IOException | JSONException | InterruptedException e) {
             e.printStackTrace();
         }
     }

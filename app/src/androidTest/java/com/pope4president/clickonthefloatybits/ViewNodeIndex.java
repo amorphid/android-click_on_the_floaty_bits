@@ -9,12 +9,15 @@ import java.util.HashMap;
 public class ViewNodeIndex {
     public ArrayList<ViewNode> viewNodes = new ArrayList<ViewNode>();
     public HashMap             textIndex = new HashMap();
+    public HashMap             idIndex   = new HashMap();
 
     public ViewNodeIndex(ViewNode node) {
         setViewNodes(node);
     }
 
     public void setViewNodes(ViewNode parent) {
+
+
         this.viewNodes.add(parent);
 
         for (ViewNode child : parent.children) {
@@ -22,8 +25,13 @@ public class ViewNodeIndex {
         }
 
         for (ViewNode node : viewNodes) {
+            View view = node.view;
+            TextView textView;
+
+            idIndex.put(view.getId(), view);
+
             if (node.isTextView) {
-                TextView textView = (TextView) node.view;
+                textView = (TextView) view;
                 textIndex.put(textView.getText(), textView);
             }
         }

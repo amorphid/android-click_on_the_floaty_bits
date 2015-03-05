@@ -19,7 +19,6 @@ public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleA
     }
 
     public void testShapeMorph() throws Exception {
-        ViewNodeIndex v = new ViewNodeIndex(new ViewNode(getRootView()));
         click(R.id.circle);
         click(R.id.square);
         expect(getView(R.id.circle)).toExist();

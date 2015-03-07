@@ -2,11 +2,10 @@ package com.pope4president.clickonthefloatybits;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-        import static com.pope4president.clickonthefloatybits.Chinchilla.clickId;
-        import static com.pope4president.clickonthefloatybits.Chinchilla.clickText;
-        import static com.pope4president.clickonthefloatybits.Chinchilla.expect;
-        import static com.pope4president.clickonthefloatybits.Chinchilla.getTextView;
-        import static com.pope4president.clickonthefloatybits.Chinchilla.getView;
+import static com.pope4president.clickonthefloatybits.Chinchilla.click_text;
+import static com.pope4president.clickonthefloatybits.Chinchilla.click_view_id;
+import static com.pope4president.clickonthefloatybits.Chinchilla.expect;
+import static com.pope4president.clickonthefloatybits.Chinchilla.get_current_activity;
 
 public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleActivity> {
     public CircleActivityTest() {
@@ -20,14 +19,14 @@ public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleA
     }
 
     public void test_click_using_view_int_id() throws Exception {
-        clickId(R.id.circle);
-        clickId(R.id.square);
-        expect(getView(R.id.circle)).toExist();
+        click_view_id(R.id.circle);
+        click_view_id(R.id.square);
+        expect(get_current_activity()).to_have_view_id(R.id.circle);
     }
 
     public void test_click_using_view_text() throws Exception {
-        clickText("I'm a circle");
-        clickText("Hey look, a square");
-        expect(getTextView("I'm a circle")).toExist();
+        click_text("I'm a circle");
+        click_text("Hey look, a square");
+        expect(get_current_activity()).to_have_text("I'm a circle");
     }
 }

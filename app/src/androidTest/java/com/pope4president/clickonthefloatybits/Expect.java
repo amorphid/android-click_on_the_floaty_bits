@@ -1,16 +1,30 @@
 package com.pope4president.clickonthefloatybits;
 
-        import android.view.View;
+import android.app.Activity;
+import android.view.View;
+
+import static com.pope4president.clickonthefloatybits.Chinchilla.get_text_view;
 
 public class Expect {
-    public View view;
+    public Activity activity;
 
-    public Expect(View view) {
-        this.view = view;
+    public Expect(Activity activity) {
+        this.activity = activity;
     }
 
-    public void toExist() throws Exception {
-        if (view == null) {
+    public void to_have_view_id(int view_id) throws Exception {
+        View view = activity.findViewById(view_id);
+        throw_exception_if_null(view);
+
+    }
+
+    public void to_have_text(String text) throws Exception {
+        View view = get_text_view(text);
+        throw_exception_if_null(view);
+    }
+
+    public void throw_exception_if_null (Object object) throws Exception {
+        if (object == null) {
             throw new Exception();
         }
     }

@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="com.pope4president.clickonthefloatybits"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pope4president.clickonthefloatybits" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".ClickOnTheFloatyBits"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".ClickOnTheFloatyBits"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".CircleActivity"
-            android:label="@string/title_activity_circle" >
+            android:label="@string/title_activity_circle"
+            >
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SquareActivity"
-            android:label="@string/title_activity_square" >
+            android:label="@string/title_activity_square"
+            >
         </activity>
     </application>
-
 </manifest>

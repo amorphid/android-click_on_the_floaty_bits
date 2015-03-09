@@ -2,14 +2,13 @@ package com.pope4president.clickonthefloatybits;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import static com.pope4president.clickonthefloatybits.Chinchilla.click_text;
 import static com.pope4president.clickonthefloatybits.Chinchilla.click_view_id;
 import static com.pope4president.clickonthefloatybits.Chinchilla.expect;
 import static com.pope4president.clickonthefloatybits.Chinchilla.get_current_activity;
 
-public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleActivity> {
-    public CircleActivityTest() {
-        super(CircleActivity.class);
+public class ClickViewIdTest extends ActivityInstrumentationTestCase2<MainActivity> {
+    public ClickViewIdTest() {
+        super(MainActivity.class);
     }
 
     @Override
@@ -19,14 +18,7 @@ public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleA
     }
 
     public void test_click_view_id() throws Exception {
-        click_view_id(R.id.circle_1);
-        click_view_id(R.id.square);
+        click_view_id(R.id.test_click_view_id);
         expect(get_current_activity()).to_have_view_id(R.id.circle_1);
-    }
-
-    public void test_click_view_text() throws Exception {
-        click_text("I'm a circle");
-        click_text("Hey look, a square");
-        expect(get_current_activity()).to_have_text("I'm a circle");
     }
 }

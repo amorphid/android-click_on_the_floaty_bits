@@ -7,4 +7,7 @@
     <string name="title_activity_square">SquareActivity</string>
     <string name="square_text">Hey look, a square</string>
     <string name="circle_text">I\'m a circle</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="test_click_view_id">Text Click View ID</string>
+    <string name="test_click_view_text">Test Click View Text</string>
 </resources>

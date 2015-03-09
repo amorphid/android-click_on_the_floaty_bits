@@ -12,24 +12,25 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".CircleActivity"
-            android:label="@string/title_activity_circle"
-            >
+            android:label="@string/title_activity_circle" >
         </activity>
-
         <activity
             android:name=".MainActivity"
-            android:label="@string/title_activity_main"
-            >
+            android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SquareActivity"
-            android:label="@string/title_activity_square"
-            >
+            android:label="@string/title_activity_square" >
+        </activity>
+        <activity
+            android:name=".TwoCircleActivity"
+            android:label="@string/title_activity_two_circle" >
         </activity>
     </application>
+
 </manifest>

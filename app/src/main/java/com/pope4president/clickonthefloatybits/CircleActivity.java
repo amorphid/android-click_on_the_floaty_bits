@@ -15,7 +15,6 @@ public class CircleActivity extends BaseActivity {
         setContentView(R.layout.activity_circle);
 
         View circle_1 = findViewById(R.id.circle_1);
-//        View circle_2 = findViewById(R.id.circle_2);
 
         circle_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,16 +23,8 @@ public class CircleActivity extends BaseActivity {
             }
         });
 
-//        circle_2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                morphShape(v);
-//            }
-//        });
-
         try {
             setBackGroundColor(circle_1);
-//            setBackGroundColor(circle_2);
         } catch (IOException | JSONException | InterruptedException e) {
             e.printStackTrace();
         }

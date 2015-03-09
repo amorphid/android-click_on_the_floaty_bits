@@ -26,5 +26,11 @@
             android:layout_width="wrap_content"
             android:text="@string/test_click_view_text"
             />
+        <RadioButton
+            android:id="@+id/test_click_duplicate_view_text"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/test_click_duplicate_view_text"
+            />
     </RadioGroup>
 </RelativeLayout>

@@ -10,4 +10,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="test_click_view_id">Text Click View ID</string>
     <string name="test_click_view_text">Test Click View Text</string>
+    <string name="title_activity_two_circle">TwoCircleActivity</string>
+    <string name="test_click_duplicate_view_text">Test Click Duplicate View Text</string>
 </resources>

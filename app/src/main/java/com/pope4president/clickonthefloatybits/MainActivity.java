@@ -21,11 +21,17 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-
         findViewById(R.id.test_click_view_text).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(activity, SquareActivity.class));
+            }
+        });
+
+        findViewById(R.id.test_click_duplicate_view_text).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(activity, TwoCircleActivity.class));
             }
         });
     }

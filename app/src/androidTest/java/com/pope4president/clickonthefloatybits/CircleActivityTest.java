@@ -19,9 +19,9 @@ public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleA
     }
 
     public void test_click_using_view_int_id() throws Exception {
-        click_view_id(R.id.circle);
+        click_view_id(R.id.circle_1);
         click_view_id(R.id.square);
-        expect(get_current_activity()).to_have_view_id(R.id.circle);
+        expect(get_current_activity()).to_have_view_id(R.id.circle_1);
     }
 
     public void test_click_using_view_text() throws Exception {

@@ -14,17 +14,26 @@ public class CircleActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle);
 
-        View view = findViewById(R.id.circle);
+        View circle_1 = findViewById(R.id.circle_1);
+//        View circle_2 = findViewById(R.id.circle_2);
 
-        view.setOnClickListener(new View.OnClickListener() {
+        circle_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 morphShape(v);
             }
         });
 
+//        circle_2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                morphShape(v);
+//            }
+//        });
+
         try {
-            setBackGroundColor(view);
+            setBackGroundColor(circle_1);
+//            setBackGroundColor(circle_2);
         } catch (IOException | JSONException | InterruptedException e) {
             e.printStackTrace();
         }

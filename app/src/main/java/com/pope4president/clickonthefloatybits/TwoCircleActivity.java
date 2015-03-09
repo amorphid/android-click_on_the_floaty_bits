@@ -21,7 +21,7 @@ public class TwoCircleActivity extends BaseActivity {
         OnClickListener listener = new OnClickListener() {
             @Override
             public void onClick(View v) {
-                morphShape(v);
+                morphShape(SquareActivity.class);
             }
         };
 

@@ -5,6 +5,7 @@ import android.view.View;
 
 import java.util.concurrent.Callable;
 
+import static com.pope4president.clickonthefloatybits.Chinchilla.get_current_activity;
 import static com.pope4president.clickonthefloatybits.Chinchilla.get_text_view;
 import static com.pope4president.clickonthefloatybits.Chinchilla.get_view;
 
@@ -37,7 +38,13 @@ public class Expect {
         }
     }
 
-    public void to_throw_exception() throws Exception {
+    public void to_be_instance_of (Class klass) throws Exception {
+        if (get_current_activity().getClass() != klass) {
+            throw new Exception();
+        }
+    }
+
+    public void to_throw_exception () throws Exception {
         Exception exception = null;
 
         try {

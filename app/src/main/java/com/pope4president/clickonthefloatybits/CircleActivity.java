@@ -19,7 +19,7 @@ public class CircleActivity extends BaseActivity {
         circle_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                morphShape(v);
+                morphShape(SquareActivity.class);
             }
         });
 

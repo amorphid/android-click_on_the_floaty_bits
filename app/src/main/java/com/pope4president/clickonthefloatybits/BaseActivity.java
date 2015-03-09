@@ -39,7 +39,7 @@ public abstract class BaseActivity extends Activity {
     }
 
     private void clearReferences(){
-        Activity currActivity = mClickOnTheFloatyBits.getCurrentActivity();
+        Activity currActivity = ClickOnTheFloatyBits.getCurrentActivity();
         if (currActivity != null && currActivity.equals(this))
             mClickOnTheFloatyBits.setCurrentActivity(null);
     }
@@ -81,8 +81,7 @@ public abstract class BaseActivity extends Activity {
         thread.start();
     }
 
-    public void morphShape(View view) {
-        Class klass = (this.getClass() == CircleActivity.class) ? SquareActivity.class : CircleActivity.class;
+    public void morphShape(Class klass) {
         Intent intent = new Intent(this, klass);
         startActivity(intent);
     }

@@ -89,4 +89,8 @@ public class Chinchilla {
                        .getRootView();
     }
 
+    public static Within within_view_id (int view_id) {
+        return new Within(view_id);
+    }
+
 }

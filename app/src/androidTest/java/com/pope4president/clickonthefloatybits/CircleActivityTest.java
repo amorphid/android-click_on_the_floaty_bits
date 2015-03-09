@@ -18,13 +18,13 @@ public class CircleActivityTest extends ActivityInstrumentationTestCase2<CircleA
         getActivity();
     }
 
-    public void test_click_using_view_int_id() throws Exception {
+    public void test_click_view_id() throws Exception {
         click_view_id(R.id.circle_1);
         click_view_id(R.id.square);
         expect(get_current_activity()).to_have_view_id(R.id.circle_1);
     }
 
-    public void test_click_using_view_text() throws Exception {
+    public void test_click_view_text() throws Exception {
         click_text("I'm a circle");
         click_text("Hey look, a square");
         expect(get_current_activity()).to_have_text("I'm a circle");

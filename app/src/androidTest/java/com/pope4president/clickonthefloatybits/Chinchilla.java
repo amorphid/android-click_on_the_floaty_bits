@@ -5,6 +5,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.Callable;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 
@@ -12,6 +13,10 @@ public class Chinchilla {
 
     public static Expect expect(Activity activity) {
         return new Expect(activity);
+    }
+
+    public static Expect expect(Callable callable) {
+        return new Expect(callable);
     }
 
     public static void click_view_id(final int view_id) {
